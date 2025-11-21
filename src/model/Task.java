@@ -20,10 +20,17 @@ public class Task {
     }
 
     public Task(String name, String description) {
+        this();
         this.name = name;
         this.description = description;
-        this.status = TaskStatus.NEW;
     }
+    public Task(String name, String description, TaskStatus status) {
+        this(name, description);
+        this.status = status;
+    }
+
+
+
 
     public int getId() {
         return this.id;
