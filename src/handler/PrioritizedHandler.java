@@ -9,6 +9,7 @@ import java.io.IOException;
 public class PrioritizedHandler extends BaseHttpHandler implements HttpHandler {
 
     private final TaskManager taskManager;
+
     public PrioritizedHandler(TaskManager taskManager) {
         this.taskManager = taskManager;
     }
@@ -20,8 +21,8 @@ public class PrioritizedHandler extends BaseHttpHandler implements HttpHandler {
                 String response = gson.toJson(taskManager.getPrioritizedTasks());
                 sendSuccess(exchange, response);
             }
-        }catch (Exception e){
-            sendInternalError(exchange,"Invalid server error" + e.getMessage());
+        } catch (Exception e) {
+            sendInternalError(exchange, "Invalid server error" + e.getMessage());
         }
     }
 }

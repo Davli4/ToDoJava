@@ -35,20 +35,20 @@ class HttpTaskServerSubtasksTest {
     }
 
     @AfterEach
-    void tearDown() throws  IOException {
+    void tearDown() throws IOException {
         httpTaskServer.stop();
     }
 
     @Test
     void testAddSubtask() throws IOException, InterruptedException {
         String subtaskJson = """
-        {
-            "name": "Test Subtask",
-            "description": "Test Subtask Description",
-            "status": "NEW",
-            "epicId": %d
-        }
-        """.formatted(epic.getId());
+                {
+                    "name": "Test Subtask",
+                    "description": "Test Subtask Description",
+                    "status": "NEW",
+                    "epicId": %d
+                }
+                """.formatted(epic.getId());
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/subtasks"))
@@ -65,7 +65,7 @@ class HttpTaskServerSubtasksTest {
 
     @Test
     void testGetSubtask() throws IOException, InterruptedException {
-        SubTask subtask = new SubTask("Test Subtask", "Test Subtask Description",  epic.getId());
+        SubTask subtask = new SubTask("Test Subtask", "Test Subtask Description", epic.getId());
         taskManager.addSubTask(subtask);
 
         HttpRequest request = HttpRequest.newBuilder()
@@ -82,7 +82,7 @@ class HttpTaskServerSubtasksTest {
 
     @Test
     void testGetEpicSubtasks() throws IOException, InterruptedException {
-        SubTask subtask = new SubTask("Test Subtask", "Test Subtask Description",  epic.getId());
+        SubTask subtask = new SubTask("Test Subtask", "Test Subtask Description", epic.getId());
         taskManager.addSubTask(subtask);
 
         HttpRequest request = HttpRequest.newBuilder()

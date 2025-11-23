@@ -29,18 +29,18 @@ class HttpTaskServerEpicsTest {
     }
 
     @AfterEach
-    void tearDown() throws  IOException {
+    void tearDown() throws IOException {
         httpTaskServer.stop();
     }
 
     @Test
     void testAddEpic() throws IOException, InterruptedException {
         String epicJson = """
-        {
-            "name": "Test Epic",
-            "description": "Test Epic Description"
-        }
-        """;
+                {
+                    "name": "Test Epic",
+                    "description": "Test Epic Description"
+                }
+                """;
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/epics"))

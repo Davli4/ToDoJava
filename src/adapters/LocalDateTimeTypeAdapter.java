@@ -12,20 +12,20 @@ public class LocalDateTimeTypeAdapter extends TypeAdapter<LocalDateTime> {
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     @Override
-    public void write(JsonWriter out, LocalDateTime time) throws IOException{
-        if(time == null){
+    public void write(JsonWriter out, LocalDateTime time) throws IOException {
+        if (time == null) {
             out.nullValue();
-        }else{
+        } else {
             out.value(formatter.format(time));
         }
     }
 
     @Override
-    public LocalDateTime read(JsonReader in) throws IOException{
-        try{
+    public LocalDateTime read(JsonReader in) throws IOException {
+        try {
             String date = in.nextString();
             return LocalDateTime.parse(date, formatter);
-        }catch (Exception e){
+        } catch (Exception e) {
             return null;
         }
     }

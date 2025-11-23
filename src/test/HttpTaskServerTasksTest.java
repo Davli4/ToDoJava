@@ -37,12 +37,12 @@ class HttpTaskServerTasksTest {
     @Test
     void testAddTask() throws IOException, InterruptedException {
         String taskJson = """
-        {
-            "name": "Test Task",
-            "description": "Test Description", 
-            "status": "NEW"
-        }
-        """;
+                {
+                    "name": "Test Task",
+                    "description": "Test Description", 
+                    "status": "NEW"
+                }
+                """;
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/tasks"))
@@ -82,13 +82,13 @@ class HttpTaskServerTasksTest {
         taskManager.addTask(task);
 
         String updatedJson = """
-        {
-            "id": %d,
-            "name": "Updated Task",
-            "description": "Updated Description", 
-            "status": "IN_PROGRESS"
-        }
-        """.formatted(task.getId());
+                {
+                    "id": %d,
+                    "name": "Updated Task",
+                    "description": "Updated Description", 
+                    "status": "IN_PROGRESS"
+                }
+                """.formatted(task.getId());
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:8080/tasks"))
